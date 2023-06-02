@@ -4,7 +4,7 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include <set>
 #include <string>
 
 using namespace std;
@@ -14,8 +14,7 @@ namespace ariel
     class MagicalContainer
     {
     private:
-        vector<int> myObj;
-
+        set<int> myObj;
     public:
         MagicalContainer() {}
         void addElement(int obj);
@@ -27,7 +26,7 @@ namespace ariel
         {
         private:
             MagicalContainer* myContainer;
-            vector<int>::size_type index;
+            set<int>::size_type index;
 
         public:
             // constructor
@@ -77,7 +76,7 @@ namespace ariel
         {
         private:
             MagicalContainer* myContainer;
-            vector<int>::size_type index;
+            set<int>::size_type index;
 
         public:
             // constructor
@@ -128,7 +127,7 @@ namespace ariel
         {
         private:
             MagicalContainer* myContainer;
-            vector<int>::size_type index;
+            set<int>::size_type index;
 
         public:
             // constructor

@@ -3,9 +3,15 @@
 using namespace std;
 using namespace ariel;
 
-    void MagicalContainer::addElement(int obj){}
+    void MagicalContainer::addElement(int obj)
+    {
+        this->myObj.insert(obj);
+    }
 
-    void MagicalContainer::removeElement(int obj){}
+    void MagicalContainer::removeElement(int obj)
+    {
+        this->myObj.erase(obj);
+    }
 
     std::ostream& ariel::operator<<(std::ostream &outs, const MagicalContainer &container){return outs;}
 
@@ -45,12 +51,19 @@ using namespace ariel;
         }
 
         // begin(type)
-        MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){return AscendingIterator();}
+        MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin()
+        {
+            return AscendingIterator(*myContainer);
+        }
 
         // end(type)
-        MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){return AscendingIterator();}
+        MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end()
+        {
+            AscendingIterator it(*myContainer);
+            it.index = myContainer->myObj.size();  // Set index to the size of the set
+            return it;
+        }
 
-    
     
     //--------------SideCrossIterator---------------
 
@@ -88,10 +101,18 @@ using namespace ariel;
         }   
 
         // begin(type)
-        MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::begin(){return SideCrossIterator();}
+        MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::begin()
+        {
+            return SideCrossIterator(*myContainer);
+        }
 
         // end(type)
-        MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end(){return SideCrossIterator();}
+        MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end()
+        {
+            SideCrossIterator it(*myContainer);
+            it.index = myContainer->myObj.size();  // Set index to the size of the set
+            return it;
+        }
 
     
     //--------------PrimeIterator---------------
@@ -130,10 +151,18 @@ using namespace ariel;
         }
 
         // begin(type)
-        MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::begin(){return PrimeIterator();}
+        MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::begin()
+        {
+            return PrimeIterator(*myContainer);
+        }
 
         // end(type)
-        MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end(){return PrimeIterator();}
+        MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end()
+        {
+            PrimeIterator it(*myContainer);
+            it.index = myContainer->myObj.size();  // Set index to the size of the set
+            return it;
+        }
 
 
 
