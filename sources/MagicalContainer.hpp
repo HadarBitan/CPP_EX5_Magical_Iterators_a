@@ -20,7 +20,6 @@ namespace ariel
         void addElement(int obj);
         void removeElement(int obj);
         int size() const { return (int)this->myObj.size(); }
-        friend std::ostream& operator<<(std::ostream &outs, const MagicalContainer &container);
 
         class AscendingIterator
         {

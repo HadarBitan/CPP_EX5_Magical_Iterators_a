@@ -18,8 +18,6 @@ using namespace ariel;
         }
     }
 
-    std::ostream& ariel::operator<<(std::ostream &outs, const MagicalContainer &container){return outs;}
-
     //--------------AscendingIterator---------------
 
         // Copy constructor
