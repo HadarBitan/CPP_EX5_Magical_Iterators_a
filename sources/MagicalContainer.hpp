@@ -4,7 +4,7 @@
 #pragma once
 
 #include <iostream>
-#include <set>
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -14,7 +14,7 @@ namespace ariel
     class MagicalContainer
     {
     private:
-        set<int> myObj;
+        vector<int> myObj;
     public:
         MagicalContainer() {}
         void addElement(int obj);
@@ -26,7 +26,7 @@ namespace ariel
         {
         private:
             MagicalContainer* myContainer;
-            set<int>::size_type index;
+            vector<int>::size_type index;
 
         public:
             // constructor
@@ -64,7 +64,7 @@ namespace ariel
             int operator*();
 
             // Pre-increment operator (operator++) ++i
-            int operator++();
+            AscendingIterator operator++();
             // begin(type)
             AscendingIterator begin();
 
@@ -76,7 +76,7 @@ namespace ariel
         {
         private:
             MagicalContainer* myContainer;
-            set<int>::size_type index;
+            vector<int>::size_type index;
 
         public:
             // constructor
@@ -114,7 +114,7 @@ namespace ariel
             int operator*();
 
             // Pre-increment operator (operator++) ++i
-            int operator++();
+            SideCrossIterator operator++();
 
             // begin(type)
             SideCrossIterator begin();
@@ -127,7 +127,7 @@ namespace ariel
         {
         private:
             MagicalContainer* myContainer;
-            set<int>::size_type index;
+            vector<int>::size_type index;
 
         public:
             // constructor
@@ -165,7 +165,7 @@ namespace ariel
             int operator*();
 
             // Pre-increment operator (operator++) ++i
-            int operator++();
+            PrimeIterator operator++();
 
             // begin(type)
             PrimeIterator begin();

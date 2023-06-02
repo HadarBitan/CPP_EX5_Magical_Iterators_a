@@ -1,16 +1,21 @@
 #include "MagicalContainer.hpp"
+#include <algorithm>
 
 using namespace std;
 using namespace ariel;
 
     void MagicalContainer::addElement(int obj)
     {
-        this->myObj.insert(obj);
+        auto it = std::lower_bound(this->myObj.begin(), this->myObj.end(), obj);
+        this->myObj.insert(it, obj);    
     }
 
     void MagicalContainer::removeElement(int obj)
     {
-        this->myObj.erase(obj);
+        auto it = std::find(this->myObj.begin(), this->myObj.end(), obj);
+        if (it != this->myObj.end()) {
+            this->myObj.erase(it);
+        }
     }
 
     std::ostream& ariel::operator<<(std::ostream &outs, const MagicalContainer &container){return outs;}
@@ -30,7 +35,7 @@ using namespace ariel;
         MagicalContainer::AscendingIterator &MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){return *this;}
 
         // Equality comparison (operator==)
-        bool MagicalContainer::AscendingIterator::operator==(const AscendingIterator &other) const {return false;}
+        bool MagicalContainer::AscendingIterator::operator==(const AscendingIterator &other) const {return this->myContainer->myObj[index] == other.myContainer->myObj[index];}
 
         // Inequality comparison (operator!=)
         bool MagicalContainer::AscendingIterator::operator!=(const AscendingIterator &other) const {return !(*this == other);}
@@ -44,10 +49,10 @@ using namespace ariel;
         int MagicalContainer::AscendingIterator::operator*(){return 1;}
 
         // Pre-increment operator (operator++) ++i
-        int MagicalContainer::AscendingIterator::operator++()
+        MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::operator++()
         {
             this->index++;
-            return this->index;
+            return *this;
         }
 
         // begin(type)
@@ -80,7 +85,7 @@ using namespace ariel;
         MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator &other){return *this;}
 
         // Equality comparison (operator==)
-        bool MagicalContainer::SideCrossIterator::operator==(const SideCrossIterator &other) const {return false;}
+        bool MagicalContainer::SideCrossIterator::operator==(const SideCrossIterator &other) const {return this->myContainer->myObj[index] == other.myContainer->myObj[index];}
 
         // Inequality comparison (operator!=)
         bool MagicalContainer::SideCrossIterator::operator!=(const SideCrossIterator &other) const {return !(*this == other);}
@@ -94,10 +99,10 @@ using namespace ariel;
         int MagicalContainer::SideCrossIterator::operator*(){return 1;}
 
         // Pre-increment operator (operator++) ++i
-        int MagicalContainer::SideCrossIterator::operator++()
+        MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::operator++()
         {
             this->index++;
-            return this->index;
+            return *this;
         }   
 
         // begin(type)
@@ -130,7 +135,7 @@ using namespace ariel;
         MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator=(const PrimeIterator &other){return *this;}
 
         // Equality comparison (operator==)
-        bool MagicalContainer::PrimeIterator::operator==(const PrimeIterator &other) const {return false;}
+        bool MagicalContainer::PrimeIterator::operator==(const PrimeIterator &other) const {return this->myContainer->myObj[index] == other.myContainer->myObj[index];}
 
         // Inequality comparison (operator!=)
         bool MagicalContainer::PrimeIterator::operator!=(const PrimeIterator &other) const {return !(*this == other);}
@@ -144,10 +149,10 @@ using namespace ariel;
         int MagicalContainer::PrimeIterator::operator*(){return 1;}
 
         // Pre-increment operator (operator++) ++i
-        int MagicalContainer::PrimeIterator::operator++()
+        MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::operator++()
         {
             this->index++;
-            return this->index;
+            return *this;
         }
 
         // begin(type)
